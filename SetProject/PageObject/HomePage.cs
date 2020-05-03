@@ -6,7 +6,8 @@ namespace SetProject.PageObject
     {
         private static readonly By SearchQuery = By.ClassName("ui-autocomplete-input");
         private static readonly By SearchButton = By.XPath("//button[@type ='submit']");
-    
+        private static readonly By SignInButton = By.XPath("//a/span[@class='hidden-sm-down']");
+
         public HomePage(IWebDriver driver) : base(driver)
         {
         }
@@ -17,6 +18,12 @@ namespace SetProject.PageObject
             return new SearchPage(Driver);
         }
 
+        public SignInPage ClickOnSignIn()
+        {
+            Driver.FindElement(SignInButton).Click();
+            return new SignInPage(Driver);
+        }
+        
         public HomePage SearchFieldInput(string search)
         {
             Driver.FindElement(SearchQuery).Clear();
