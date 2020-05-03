@@ -13,7 +13,8 @@ namespace SetProject.Tests
             HomePage mainPage = new HomePage(Driver);
             SignInPage signInPage = mainPage.ClickOnSignIn().InputLogin(email).InputPassword(password).ClickOnSignIn();
             bool isSignedUp = signInPage.SignedInCheck();
-                
+            if (isSignedUp) signInPage.ClickOnSignOut();      
+            
             if(isPositive)
                 Assert.That(isSignedUp, Is.True,
                     $"Message has sent: {(isSignedUp ? "successfully" : "unsuccessfully")}");
